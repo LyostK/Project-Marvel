@@ -1,11 +1,8 @@
 // marvel.service.ts
 
-export interface MarvelApiResponse {
-  data: {
-    results: MarvelCharacter[];
-  };
-}
-
+import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
 export interface MarvelCharacter {
   id: number;
   name: string;
@@ -14,38 +11,19 @@ export interface MarvelCharacter {
     path: string;
     extension: string;
   };
-  // Ajoute d'autres propriétés si nécessaire
 }
-
-
-// marvel.service.ts
-
-import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
 })
 export class MarvelService {
-
-  private publicKey = '6c6fe75e100637151a57e763c9f9a635';
-  private apiUrl = 'https://gateway.marvel.com:443/v1/public/characters';
+  private apiUrl = 'https://gateway.marvel.com/v1/public';
+  private publicKey = 'b60afe8c1a5cb0d468c8c2b236541e64'; // Remplacez par votre clé publique
 
   constructor(private http: HttpClient) { }
 
-  getMarvelCharacters(): Observable<MarvelCharacter[]> {
-    const ts = new Date().getTime().toString();
-    const hash = 'ffd275c5130566a2916217b101f26150';
-
-    const fullUrl = `${this.apiUrl}?ts=${ts}&apikey=${this.publicKey}&hash=${hash}`;
-
-    return this.http.get<MarvelApiResponse>(fullUrl)
-      .pipe(
-        map(response => response.data.results)
-      );
+  getMarvelCharacters(): Observable<any> {
+    const url = `${this.apiUrl}/characters?apikey=${this.publicKey}`;
+    return this.http.get(url);
   }
-
-  // Ajoute d'autres méthodes selon les besoins
 }
