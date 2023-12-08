@@ -1,0 +1,8 @@
+<!-- home.component.html -->
+
+<div *ngFor="let character of marvelCharacters">
+    <h3>{{ character.name }}</h3>
+    <p>{{ character.description }}</p>
+    <img [src]="character.thumbnail.path + '.' + character.thumbnail.extension" alt="{{ character.name }}">
+  </div>
+  
