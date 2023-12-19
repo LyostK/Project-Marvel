@@ -12,7 +12,7 @@ import { MarvelComponent } from './marvel/marvel.component';
 @NgModule({
   declarations: [
     AppComponent,
-    MarvelComponent
+    MarvelComponent,
   ],
   imports: [
     CommonModule,

@@ -1,8 +1,10 @@
 <!-- marvel.component.html -->
 
-<div *ngFor="let character of marvelCharacters">
-    <h2>{{ character.name }}</h2>
-    <p>{{ character.description }}</p>
-    <img [src]="character.thumbnail.path + '.' + character.thumbnail.extension" alt="{{ character.name }}">
+<div class="characters-container">
+    <div *ngFor="let character of marvelCharacters" class="character-card">
+      <h2>{{ character.name }}</h2>
+      <img [src]="character.thumbnail.path + '.' + character.thumbnail.extension" alt="{{ character.name }}">
+      <p>{{ character.description }}</p>
+    </div>
   </div>
   

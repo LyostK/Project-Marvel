@@ -9,7 +9,6 @@ import { MarvelService, MarvelCharacter } from '../marvel.service';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
-
   marvelCharacters: MarvelCharacter[] = [];
 
   constructor(private marvelService: MarvelService) { }

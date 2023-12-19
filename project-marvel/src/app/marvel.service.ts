@@ -1,9 +1,10 @@
 // marvel.service.ts
 
+// Importez les modules nécessaires
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
-import { catchError, map } from 'rxjs/operators';
+import { map, catchError } from 'rxjs/operators';
 
 export interface MarvelCharacter {
   id: number;
@@ -19,22 +20,22 @@ export interface MarvelCharacter {
   providedIn: 'root'
 })
 export class MarvelService {
-  private apiUrl = 'https://gateway.marvel.com/v1/public/';
-  private apiKey = 'b60afe8c1a5cb0d468c8c2b236541e64'; // Remplacez par votre clé publique
+  private apiUrl = 'https://gateway.marvel.com/v1/public';
+  private apiKey = 'b60afe8c1a5cb0d468c8c2b236541e64';
   private charactersEndpoint = 'characters';
 
   constructor(private http: HttpClient) { }
 
   getMarvelCharacters(): Observable<MarvelCharacter[]> {
-    const url = `${this.apiUrl}${this.charactersEndpoint}?apikey=${this.apiKey}`;
-    return this.http.get<any>(url).pipe(
+    const url = `${this.apiUrl}/${this.charactersEndpoint}?apikey=${this.apiKey}`;
+    return this.http.get<MarvelCharacter[]>(url).pipe(
       map((response: any) => response.data.results),
       catchError(this.handleError)
     );
   }
 
-  private handleError(error: any): Observable<never> {
+  private handleError(error: any) {
     console.error('An error occurred', error);
-    return throwError('Something went wrong. Please try again later.');
+    return throwError(error);
   }
 }
