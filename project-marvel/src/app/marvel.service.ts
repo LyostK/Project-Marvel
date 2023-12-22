@@ -16,6 +16,18 @@ export interface MarvelCharacter {
   };
 }
 
+export interface Comic {
+  id: number;
+  title: string;
+  thumbnail: {
+    path: string;
+    extension: string;
+  };
+  description: string;
+  pageCount: number;
+  // Ajoutez d'autres propriétés si nécessaire
+}
+
 @Injectable({
   providedIn: 'root'
 })
@@ -34,14 +46,6 @@ export class MarvelService {
     );
   }
 
-  getComicsByCharacter(charactedId: number): Observable<MarvelCharacter[]>{
-    const url = `${this.apiUrl}/${this.charactersEndpoint}/${charactedId}/comics?apikey=${this.apiKey}`;
-    return this.http.get<MarvelCharacter[]>(url).pipe(
-      map((response: any) => response.data.results),
-      catchError(this.handleError)
-    );
-  }
-
   private handleError(error: any) {
     console.error('An error occurred', error);
     return throwError(error);
@@ -54,4 +58,31 @@ export class MarvelService {
       catchError(this.handleError)
     );
   }
+
+  
+  getComicsByCharacter(characterId: number): Observable<Comic[]> {
+    const url = `${this.apiUrl}/${this.charactersEndpoint}/${characterId}/comics?apikey=${this.apiKey}`;
+    return this.http.get<Comic[]>(url).pipe(
+      map((response: any) => response.data.results),
+      catchError(this.handleError)
+    );
+  }
+
+  getComicDetails(comicId: number): Observable<any> {
+    const url = `${this.apiUrl}/comics/${comicId}?apikey=${this.apiKey}`;
+    return this.http.get<any>(url).pipe(
+      map((response: any) => response.data.results),
+      catchError(this.handleError)
+    );
+  }
+
+  getSeriesByCharacter(characterId: number): Observable<any> {
+    const url = `${this.apiUrl}/${this.charactersEndpoint}/${characterId}/series?apikey=${this.apiKey}`;
+    return this.http.get<any>(url).pipe(
+      map((response: any) => response.data.results),
+      catchError(this.handleError)
+    );
+  }
+
 }
+

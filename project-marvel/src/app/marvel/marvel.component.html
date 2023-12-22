@@ -7,8 +7,8 @@
     
     <!-- Boutons -->
     <div class="buttons-container">
-      <button class="series" (click)="openCharacterDescriptionDialog(character.id)">Series</button>
-      <button class="comics" (click)="openCharacterDescriptionDialog(character.id)">Comics</button>
+      <button class="series" (click)="fetchSeries(character.id)">Series</button>
+      <button class="comics" (click)="fetchComics(character.id)">Comics</button>
       <button class="description" (click)="openCharacterDescriptionDialog(character.id)">Description</button>      
     </div>
   </div>

@@ -15,7 +15,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CharacterDescriptionDialogComponent } from './character-description-dialog/character-description-dialog.component';
 import { ComicsComponent } from './comics/comics.component';
 import { SeriesComponent } from './series/series.component';
-import { AboutComponent } from './about/about.component'; // Importer AboutComponent
+import { AboutComponent } from './about/about.component';
+import { ComicDialogComponent } from './comic-dialog/comic-dialog.component';
+import { SerieDialogComponent } from './serie-dialog/serie-dialog.component';
 
 const routes: Routes = [
   { path: 'marvel', component: MarvelComponent },
@@ -33,6 +35,8 @@ const routes: Routes = [
     ComicsComponent,
     SeriesComponent,
     AboutComponent,
+    ComicDialogComponent,
+    SerieDialogComponent
   ],
   imports: [
     CommonModule,
