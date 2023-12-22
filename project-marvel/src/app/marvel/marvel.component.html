@@ -1,10 +1,15 @@
 <!-- marvel.component.html -->
 
 <div class="characters-container">
-    <div *ngFor="let character of marvelCharacters" class="character-card">
-      <h2>{{ character.name }}</h2>
-      <img [src]="character.thumbnail.path + '.' + character.thumbnail.extension" alt="{{ character.name }}">
-      <p>{{ character.description }}</p>
+  <div *ngFor="let character of marvelCharacters" class="character-card">
+    <h2>{{ character.name }}</h2>
+    <img [src]="character.thumbnail.path + '.' + character.thumbnail.extension" alt="{{ character.name }}">
+    
+    <!-- Boutons -->
+    <div class="buttons-container">
+      <button class="series" (click)="openCharacterDescriptionDialog(character.id)">Series</button>
+      <button class="comics" (click)="openCharacterDescriptionDialog(character.id)">Comics</button>
+      <button class="description" (click)="openCharacterDescriptionDialog(character.id)">Description</button>      
     </div>
   </div>
-  
+</div>

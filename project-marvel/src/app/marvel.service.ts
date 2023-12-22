@@ -34,8 +34,24 @@ export class MarvelService {
     );
   }
 
+  getComicsByCharacter(charactedId: number): Observable<MarvelCharacter[]>{
+    const url = `${this.apiUrl}/${this.charactersEndpoint}/${charactedId}/comics?apikey=${this.apiKey}`;
+    return this.http.get<MarvelCharacter[]>(url).pipe(
+      map((response: any) => response.data.results),
+      catchError(this.handleError)
+    );
+  }
+
   private handleError(error: any) {
     console.error('An error occurred', error);
     return throwError(error);
+  }
+
+  getCharacterDescription(characterId: number): Observable<string> {
+    const url = `${this.apiUrl}/${this.charactersEndpoint}/${characterId}?apikey=${this.apiKey}`;
+    return this.http.get<any>(url).pipe(
+      map((response: any) => response.data.results[0].description),
+      catchError(this.handleError)
+    );
   }
 }
