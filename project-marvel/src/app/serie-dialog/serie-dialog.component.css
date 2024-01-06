@@ -1,26 +1,17 @@
-/* comic-dialog.component.css */
+/* serie-dialog.component.css */
+.modal-dialog {
+  max-width: 80%; 
+}
+
 .modal-content {
-    width: 100%; /* Ajustez la largeur du popup en pourcentage de la vue */
-    overflow-y: auto; /* Ajoutez un défilement vertical */
-    max-height: 80vh; /* Ajustez la hauteur maximale du popup en pourcentage de la vue */
-  }
-  
-  .card {
-    width: 110%; /* Ajustez la largeur de chaque carte selon vos besoins */
-    display: inline-block;
-    vertical-align: top;
-    border: 1px solid #ddd; /* Ajoutez une bordure pour séparer les cartes */
-    border-radius: 5px;
-    transition: transform 0.2s ease-in-out;
-  }
-  
-  .card-img-top {
-    max-height: 150px; /* Ajustez la hauteur maximale de l'image selon vos besoins */
-    object-fit: cover;
-  }
-  
-  .card-title {
-    font-size: 16px;
-    margin-top: 10px;
-  }
-  
+  width: 100%; 
+}
+
+.card {
+  height: 100%; 
+}
+
+.modal-body {
+  max-height: 400px; 
+  overflow-y: auto; 
+}

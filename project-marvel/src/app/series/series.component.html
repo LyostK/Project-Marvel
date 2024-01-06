@@ -1,1 +1,15 @@
-<p>series works!</p>
+<!-- series.component.html -->
+
+<div class="row">
+    <div *ngFor="let series of series" class="col-md-4 mb-3">
+      <div class="card">
+        <div class="card-body text-center d-flex flex-column align-items-center">
+          <h5 class="card-title font-weight-bold mb-2" style="font-size: 1rem;">{{ series.title }}</h5>
+          <img [src]="series.thumbnail.path + '.' + series.thumbnail.extension" class="card-img-top" alt="{{ series.title }}" style="height: 200px; object-fit: contain;">
+          <!-- Add other details of the series as needed -->
+          <button class="btn btn-secondary mt-2" (click)="fetchCharactersForSeries(series.id)">Characters</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  

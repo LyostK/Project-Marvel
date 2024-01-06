@@ -25,7 +25,6 @@ export interface Comic {
   };
   description: string;
   pageCount: number;
-  // Ajoutez d'autres propriétés si nécessaire
 }
 
 @Injectable({
@@ -35,6 +34,8 @@ export class MarvelService {
   private apiUrl = 'https://gateway.marvel.com/v1/public';
   private apiKey = 'b60afe8c1a5cb0d468c8c2b236541e64';
   private charactersEndpoint = 'characters';
+  private comicsEndpoint = 'comics'; 
+  private seriesEndpoint = 'series';
 
   constructor(private http: HttpClient) { }
 
@@ -59,6 +60,37 @@ export class MarvelService {
     );
   }
 
+  getComics(): Observable<Comic[]> {
+    const url = `${this.apiUrl}/${this.comicsEndpoint}?apikey=${this.apiKey}`;
+    return this.http.get<Comic[]>(url).pipe(
+      map((response: any) => response.data.results),
+      catchError(this.handleError)
+    );
+  }
+  
+  getComicDetails(comicId: number): Observable<Comic> {
+    const url = `${this.apiUrl}/comics/${comicId}?apikey=${this.apiKey}`;
+    return this.http.get<Comic>(url).pipe(
+      map((response: any) => response.data.results[0]),
+      catchError(this.handleError)
+    );
+  }
+  
+  getCharactersForComic(comicId: number): Observable<any[]> {
+    const url = `${this.apiUrl}/comics/${comicId}/characters?apikey=${this.apiKey}`;
+    return this.http.get<any[]>(url).pipe(
+      map((response: any) => response.data.results),
+      catchError(this.handleError)
+    );
+  }
+
+  getCharactersForSeries(seriesId: number): Observable<any[]> {
+    const url = `${this.apiUrl}/series/${seriesId}/characters?apikey=${this.apiKey}`;
+    return this.http.get<any[]>(url).pipe(
+      map((response: any) => response.data.results),
+      catchError(this.handleError)
+    );
+  }
   
   getComicsByCharacter(characterId: number): Observable<Comic[]> {
     const url = `${this.apiUrl}/${this.charactersEndpoint}/${characterId}/comics?apikey=${this.apiKey}`;
@@ -68,9 +100,9 @@ export class MarvelService {
     );
   }
 
-  getComicDetails(comicId: number): Observable<any> {
-    const url = `${this.apiUrl}/comics/${comicId}?apikey=${this.apiKey}`;
-    return this.http.get<any>(url).pipe(
+  getSeries(): Observable<any[]> {
+    const url = `${this.apiUrl}/${this.seriesEndpoint}?apikey=${this.apiKey}`;
+    return this.http.get<any[]>(url).pipe(
       map((response: any) => response.data.results),
       catchError(this.handleError)
     );

@@ -2,10 +2,10 @@
 import { Component, OnInit } from '@angular/core';
 import { MarvelService, MarvelCharacter } from '../marvel.service';
 import { MatDialog } from '@angular/material/dialog';
-import { CharacterDescriptionDialogComponent } from '../character-description-dialog/character-description-dialog.component';
+import { CharacterDesciprtionDialogComponent } from '../character-desciprtion-dialog/character-desciprtion-dialog.component';
 import { ComicDialogComponent } from '../comic-dialog/comic-dialog.component';
 import { ComicsComponent } from '../comics/comics.component';
-import { SerieDialogComponent } from '../serie-dialog/serie-dialog.component'; 
+import { SeriesDialogComponent } from '../serie-dialog/serie-dialog.component';
 import { SeriesComponent } from '../series/series.component';
 
 @Component({
@@ -36,7 +36,7 @@ export class MarvelComponent implements OnInit {
 
   openCharacterDescriptionDialog(characterId: number): void {
     this.marvelService.getCharacterDescription(characterId).subscribe(description => {
-      const dialogRef = this.dialog.open(CharacterDescriptionDialogComponent, {
+      const dialogRef = this.dialog.open(CharacterDesciprtionDialogComponent,{
         width: '600px',
         data: { description: description || 'No description available.' },
       });
@@ -57,7 +57,7 @@ export class MarvelComponent implements OnInit {
 
   openComicDialog(comics: ComicsComponent[]): void {
     const dialogRef = this.dialog.open(ComicDialogComponent, {
-      width: '400px',
+      width: '600px',
       data: { comics }
     });
   }
@@ -70,7 +70,7 @@ export class MarvelComponent implements OnInit {
   }
 
   openSeriesDialog(series: SeriesComponent[]): void {
-    const dialogRef = this.dialog.open(SerieDialogComponent, {
+    const dialogRef = this.dialog.open(SeriesDialogComponent, {
       width: '600px',
       data: { series }
     });

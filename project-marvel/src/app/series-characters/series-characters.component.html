@@ -1,0 +1,27 @@
+<!-- series-characters.component.html -->
+<div class="modal-content">
+    <div class="modal-header">
+      <h5 class="modal-title">Characters in the Series</h5>
+      <button type="button" class="close" (click)="dialogRef.close()">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      <div class="row" *ngIf="data.characters.length > 0; else noCharacters">
+        <div *ngFor="let character of data.characters" class="col-md-4 mb-3">
+          <!-- Your character card content goes here -->
+          <div class="card">
+            <img [src]="character.thumbnail.path + '.' + character.thumbnail.extension" class="card-img-top" alt="{{ character.name }}" style="height: 200px; object-fit: cover;">
+            <div class="card-body">
+              <h5 class="card-title">{{ character.name }}</h5>
+              <!-- Add other details of the character as needed -->
+            </div>
+          </div>
+        </div>
+      </div>
+      <ng-template #noCharacters>
+        <p>No characters found for this series.</p>
+      </ng-template>
+    </div>
+  </div>
+  

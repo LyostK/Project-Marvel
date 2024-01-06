@@ -12,12 +12,14 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { MarvelComponent } from './marvel/marvel.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { CharacterDescriptionDialogComponent } from './character-description-dialog/character-description-dialog.component';
+import { CharacterDesciprtionDialogComponent } from './character-desciprtion-dialog/character-desciprtion-dialog.component';
 import { ComicsComponent } from './comics/comics.component';
 import { SeriesComponent } from './series/series.component';
 import { AboutComponent } from './about/about.component';
 import { ComicDialogComponent } from './comic-dialog/comic-dialog.component';
-import { SerieDialogComponent } from './serie-dialog/serie-dialog.component';
+import { SeriesDialogComponent } from './serie-dialog/serie-dialog.component';
+import { ComicCharactersComponent } from './comic-characters/comic-characters.component';
+import { SeriesCharactersComponent } from './series-characters/series-characters.component';
 
 const routes: Routes = [
   { path: 'marvel', component: MarvelComponent },
@@ -31,12 +33,14 @@ const routes: Routes = [
   declarations: [
     AppComponent,
     MarvelComponent,
-    CharacterDescriptionDialogComponent,
     ComicsComponent,
     SeriesComponent,
     AboutComponent,
     ComicDialogComponent,
-    SerieDialogComponent
+    SeriesDialogComponent,
+    ComicCharactersComponent,
+    CharacterDesciprtionDialogComponent,
+    SeriesCharactersComponent
   ],
   imports: [
     CommonModule,

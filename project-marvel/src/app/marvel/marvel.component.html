@@ -3,7 +3,7 @@
 <div class="characters-container">
   <div *ngFor="let character of marvelCharacters" class="character-card">
     <h2>{{ character.name }}</h2>
-    <img [src]="character.thumbnail.path + '.' + character.thumbnail.extension" alt="{{ character.name }}">
+    <img [src]="character.thumbnail.path + '.' + character.thumbnail.extension" alt="{{ character.name }}" style="height: 300px; object-fit: cover;">
     
     <!-- Boutons -->
     <div class="buttons-container">

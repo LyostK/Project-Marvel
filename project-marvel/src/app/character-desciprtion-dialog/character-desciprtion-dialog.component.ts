@@ -3,7 +3,7 @@ import { Component, Inject } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 
 @Component({
-  selector: 'app-character-description-dialog',
+  selector: 'app-character-desciprtion-dialog',
   template: `
     <div class="modal">
       <div class="modal-dialog">
@@ -64,10 +64,10 @@ import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
     `,
   ],
 })
-export class CharacterDescriptionDialogComponent {
+export class CharacterDesciprtionDialogComponent {
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: { description: string },
-    public dialogRef: MatDialogRef<CharacterDescriptionDialogComponent>
+    public dialogRef: MatDialogRef<CharacterDesciprtionDialogComponent>
   ) {}
 
   closeDialog(): void {

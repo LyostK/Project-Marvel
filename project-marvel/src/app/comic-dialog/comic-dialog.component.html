@@ -10,7 +10,7 @@
       <div class="row">
         <div *ngFor="let comic of data.comics" class="col-md-4 mb-3">
           <div class="card">
-            <img [src]="comic.thumbnail.path + '.' + comic.thumbnail.extension" class="card-img-top" alt="{{ comic.title }}">
+            <img [src]="comic.thumbnail.path + '.' + comic.thumbnail.extension" class="card-img-top" alt="{{ comic.title }}" style="height: 200px; object-fit: cover;">
             <div class="card-body">
               <h5 class="card-title">{{ comic.title }}</h5>
               <!-- Ajoutez d'autres détails du comic selon vos besoins -->
